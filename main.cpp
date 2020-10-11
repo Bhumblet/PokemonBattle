@@ -224,7 +224,21 @@ string battle(string one, string two){
     int indexTwo = indexFinder(two);
     string first = "";
     string second = "";
-    if(get_speed(indexOne) > get_speed(indexTwo)){ // Checks to see which pokemon attacks first by comparing speed
+    if(get_speed(indexOne) ==  get_speed(indexTwo)){ // Checks to see which pokemon attacks first by comparing speed
+        char charOne[one.length() + 1];
+        char charTwo[two.length() + 1];
+        strcpy(charOne, one.c_str());
+        strcpy(charTwo, two.c_str());
+        int compare = strcmp(charOne,charTwo);
+        if(compare < 0){
+            first = one;
+            second = two;
+        } else if(compare > 0){
+            first = two;
+            second = one;
+        }
+
+    } else if(get_speed(indexOne) > get_speed(indexTwo)){
         first = one;
         second = two;
     } else {
