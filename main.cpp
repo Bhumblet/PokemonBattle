@@ -71,13 +71,9 @@ int main() {
     cout<<damage("Quilava", "Grovyle")<<endl;
     cout<<endl;
 
+    // #Q11: How much damage does Goomy do to Beedrill in one attack?
     cout<<"#Q11"<<endl;
     cout<<damage("Goomy", "Beedrill")<<endl;
-    cout<<endl;
-
-    // #Q11: How much damage does Goomy do to Beedrill in one attack?
-    cout<<"#Q12"<<endl;
-    cout<<damage("Tepig", "Charizard")<<endl;
     cout<<endl;
 
     // #Q12: How much damage does Tepig do to Charizard in one attack?
@@ -237,7 +233,6 @@ string battle(string one, string two){
             first = two;
             second = one;
         }
-
     } else if(get_speed(indexOne) > get_speed(indexTwo)){
         first = one;
         second = two;
@@ -245,20 +240,20 @@ string battle(string one, string two){
         first = two;
         second = one;
     }
-    float hpOne = (float)get_hp(indexOne);
-    float hpTwo = (float)get_hp(indexTwo);
+    float hpOne = (float)get_hp(indexFinder(first));
+    float hpTwo = (float)get_hp(indexFinder(second));
     string winner = "";
     while(hpOne > 0 && hpTwo > 0 ){ // While pokemon both still have health remaining
         float attackOne = damage(first, second);
         hpTwo -= attackOne;
         if(hpTwo <= 0){
-            winner = one;
+            winner = first;
             break;
         }
         float attackTwo = damage(second, first);
         hpOne -= attackTwo;
         if(hpOne <= 0){
-            winner = two;
+            winner = second;
             break;
         }
     }
